@@ -17,11 +17,15 @@ const razorpay = new Razorpay({
 });
 
 // CORS Configuration: Allow requests from Vercel frontend
-app.use(cors({
+const corsOptions = {
   origin: 'https://razor-pay-frontend-iota.vercel.app', // Your frontend URL
-  methods: ['GET', 'POST'],
-  credentials: true,
-}));
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // If you're using cookies or HTTP authentication
+};
+
+// Use CORS middleware with the specified options
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
