@@ -94,7 +94,7 @@ app.post('/verify-payment', (req, res) => {
 });
 
 // Serve payment success page
-app.get('/payment-success', (req, res) => {
+app.get('/success', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'success.html'));
 });
 
